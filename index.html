@@ -11,6 +11,117 @@ button,input,select,textarea{font:inherit}button{cursor:pointer;border:1px solid
 .grid{display:grid;gap:16px}.stats{grid-template-columns:repeat(4,minmax(0,1fr));margin-bottom:16px}.card{background:linear-gradient(145deg,rgba(22,32,53,.97),rgba(16,24,41,.97));border:1px solid var(--line);border-radius:18px;padding:18px;box-shadow:0 12px 30px #00000012}.stat-head{display:flex;justify-content:space-between;align-items:center;color:var(--muted);font-size:12px}.stat-icon{width:33px;height:33px;border-radius:11px;display:grid;place-items:center;background:#252b4c;color:var(--purple);font-size:16px}.stat-value{font-size:31px;font-weight:750;letter-spacing:-1px;margin:9px 0 2px}.stat-foot{font-size:11px;color:var(--muted)}.positive{color:var(--green)}.mid{grid-template-columns:1.2fr .8fr;margin-bottom:16px}.cardtitle{font-size:15px;font-weight:700}.cardsub{color:var(--muted);font-size:12px;margin-top:3px}.chartwrap{height:230px;position:relative;margin-top:14px}.chartwrap canvas{width:100%;height:100%;display:block}.ringarea{display:flex;align-items:center;gap:24px;margin-top:18px}.ring{width:155px;height:155px;position:relative;flex:0 0 auto}.ring svg{width:100%;height:100%;transform:rotate(-90deg)}.ringcenter{position:absolute;inset:0;display:grid;align-content:center;text-align:center}.ringcenter strong{font-size:29px}.ringcenter span{color:var(--muted);font-size:11px}.legend{display:grid;gap:13px;flex:1}.legendrow{display:flex;align-items:center;justify-content:space-between;gap:10px;color:var(--muted);font-size:12px}.dot{width:8px;height:8px;border-radius:3px;display:inline-block;margin-right:7px}.legendrow b{color:var(--text);font-size:13px}.lower{grid-template-columns:1.35fr .65fr}.toolbar{display:flex;gap:8px;flex-wrap:wrap;margin:16px 0}.field{background:#0e1729;border:1px solid var(--line);color:var(--text);border-radius:9px;padding:9px 10px;min-width:0}.search{flex:1;min-width:150px}.tablewrap{overflow:auto}table{width:100%;border-collapse:collapse;min-width:680px}th{text-align:left;color:var(--muted);font-size:10px;letter-spacing:1px;font-weight:700;padding:12px 9px;border-bottom:1px solid var(--line)}td{padding:13px 9px;border-bottom:1px solid #26334c99;font-size:12px}tbody tr:last-child td{border-bottom:0}.taskname{font-weight:650;font-size:13px}.tasknotes{color:#c1cbe0;font-size:11px;line-height:1.5;margin-top:6px;white-space:pre-wrap;overflow-wrap:anywhere;border-left:2px solid #5de1d0;padding:4px 0 4px 8px;max-width:560px}.tiny{color:var(--muted);font-size:11px;margin-top:3px}.pill{display:inline-flex;align-items:center;padding:5px 8px;border-radius:20px;font-size:10px;font-weight:700;white-space:nowrap}.s-not{background:#2b3548;color:#c1cadd}.s-progress{background:#45361f;color:var(--amber)}.s-done{background:#153d36;color:var(--green)}.s-hold{background:#422936;color:#ff9ab0}.p-high{color:var(--red)}.p-medium{color:var(--amber)}.p-low{color:var(--cyan)}.rowactions{display:flex;gap:5px}.rowactions button{padding:5px 7px;font-size:11px}.focusbox{border:1px solid #524b88;background:linear-gradient(140deg,#25224b,#171d35);padding:15px;border-radius:13px;margin-top:16px}.focusbox .big{font-size:21px;font-weight:750;margin:7px 0}.focusbox p{color:#b5bdd5;font-size:12px;margin:0}.workflow-checks{display:grid;grid-template-columns:1fr 1fr;gap:6px 10px;margin-top:10px;padding:10px;background:#0e1729;border:1px solid var(--line);border-radius:10px}.workflow-checks label{display:flex;align-items:flex-start;gap:6px;font-size:10px;color:#b9c5dc;line-height:1.35;cursor:pointer}.workflow-checks input{accent-color:#5de1d0;margin:1px 0 0;flex:0 0 auto}.workflow-heading{font-size:10px;color:var(--muted);letter-spacing:.8px;text-transform:uppercase;margin-top:8px}.task-check-summary{font-size:10px;color:var(--muted);margin-top:5px}.task-check-summary b{color:var(--cyan)}.prioritylist{display:grid;gap:12px;margin-top:18px}.priorityitem{display:flex;gap:10px;align-items:flex-start}.prioritybullet{width:9px;height:9px;border-radius:50%;margin-top:5px}.priorityitem strong{font-size:12px}.priorityitem span{display:block;color:var(--muted);font-size:11px;margin-top:3px}.progressline{height:6px;background:#27334a;border-radius:10px;overflow:hidden;margin-top:8px}.progressline i{display:block;height:100%;background:linear-gradient(90deg,var(--purple),var(--cyan));border-radius:10px}.empty{text-align:center;color:var(--muted);padding:35px 10px}.footer{color:#697793;font-size:11px;text-align:center;padding:18px 0 5px}
 .modalback{position:fixed;inset:0;background:#050914c9;display:none;align-items:center;justify-content:center;padding:18px;z-index:10}.modal{width:min(520px,100%);background:#141e32;border:1px solid var(--line);border-radius:18px;padding:22px;max-height:92vh;overflow:auto}.modal h2{margin:0 0 16px}.formgrid{display:grid;grid-template-columns:1fr 1fr;gap:12px}.formfield{display:grid;gap:6px}.formfield.full{grid-column:1/-1}.formfield label{font-size:11px;color:var(--muted)}.formfield input,.formfield select,.formfield textarea{width:100%;background:#0b1425;border:1px solid var(--line);border-radius:9px;padding:10px;color:var(--text)}.modalactions{display:flex;justify-content:flex-end;gap:8px;margin-top:18px}
 @media(max-width:950px){.stats{grid-template-columns:repeat(2,minmax(0,1fr))}.mid,.lower{grid-template-columns:1fr}.app{padding:16px}.top{align-items:flex-start;flex-direction:column}.ringarea{justify-content:center}}@media(max-width:500px){.stats{grid-template-columns:1fr 1fr}.stat-value{font-size:25px}.formgrid{grid-template-columns:1fr}.formfield.full{grid-column:auto}.h1{font-size:23px}}
+
+/* Responsive layout: desktop table + mobile task cards */
+@media (max-width: 650px) {
+  body { font-size: 14px; }
+  .app { padding: 12px; }
+  .top { gap: 12px; }
+  .h1 { font-size: 22px; line-height: 1.2; }
+  .top-actions { width: 100%; display: flex; flex-wrap: wrap; gap: 8px; }
+  button, .field, select { min-height: 42px; }
+  button { touch-action: manipulation; }
+  .stats { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 9px; }
+  .card { padding: 13px; border-radius: 14px; }
+  .stat-value { font-size: 24px; }
+  .mid, .lower { grid-template-columns: minmax(0, 1fr); gap: 12px; }
+  .toolbar { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  .toolbar .search { grid-column: 1 / -1; width: 100%; }
+  .toolbar .field { width: 100%; }
+  .tablewrap { overflow: visible; }
+  table, tbody { display: block; width: 100%; min-width: 0; }
+  thead { display: none; }
+  tbody tr {
+    display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 0 12px; padding: 10px; margin: 0 0 12px;
+    background: #111b2e; border: 1px solid var(--line); border-radius: 13px;
+  }
+  tbody td { display: block; min-width: 0; padding: 8px 2px; border-bottom: 0; overflow-wrap: anywhere; }
+  tbody td:first-child { grid-column: 1 / -1; padding-top: 3px; }
+  tbody td:nth-child(2)::before { content: "PRIORITY"; }
+  tbody td:nth-child(3)::before { content: "DUE"; }
+  tbody td:nth-child(4)::before { content: "STATUS"; }
+  tbody td:nth-child(5)::before { content: "ACTIONS"; }
+  tbody td:nth-child(n+2)::before {
+    display: block; color: var(--muted); font-size: 9px; font-weight: 700;
+    letter-spacing: .8px; margin-bottom: 6px;
+  }
+  tbody td:nth-child(4) select { width: 100%; max-width: none !important; }
+  .rowactions button { min-height: 36px; }
+  .workflow-checks { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 10px 8px; padding: 9px; }
+  .workflow-checks label { font-size: 11px; min-height: 22px; }
+  .workflow-checks input { width: 17px; height: 17px; }
+  .tasknotes { max-width: 100%; }
+  .ringarea { flex-wrap: wrap; gap: 16px; }
+  .ring { width: 125px; height: 125px; }
+  .formgrid { grid-template-columns: minmax(0, 1fr); }
+  .formfield.full { grid-column: auto; }
+}
+@media (max-width: 380px) {
+  .app { padding: 8px; }
+  .stats { gap: 7px; }
+  .stat-value { font-size: 21px; }
+  .workflow-checks { grid-template-columns: 1fr; }
+  .toolbar { grid-template-columns: 1fr; }
+  .toolbar .search { grid-column: auto; }
+}
+
+
+.workflow-date{display:block;margin:2px 0 0 24px;color:var(--muted);font-size:10px;line-height:1.35}
+.workflow-checks label{align-items:flex-start}
+
+/* Approval checklist: red until approved, green once checked */
+.workflow-checks{
+  background:rgba(239,68,68,.10)!important;
+  border:1px solid rgba(239,68,68,.58)!important;
+  border-radius:12px;
+  padding:10px;
+  transition:background .18s ease,border-color .18s ease;
+}
+.workflow-checks label{
+  display:flex;
+  gap:7px;
+  align-items:flex-start;
+  border-radius:7px;
+  padding:5px 7px;
+  background:rgba(239,68,68,.12);
+  border:1px solid rgba(239,68,68,.32);
+  transition:background .18s ease,border-color .18s ease,color .18s ease;
+}
+.workflow-checks label.approved{
+  background:rgba(34,197,94,.18);
+  border-color:rgba(34,197,94,.75);
+  color:#bbf7d0;
+}
+.workflow-checks label.approved .workflow-date{color:#86efac}
+.workflow-checks label input{margin-top:2px;accent-color:#22c55e}
+
+
+/* Task progress colors: red = not started, orange = in progress/partially done, green = completed */
+tr.task-progress-red > td, .task-card.task-progress-red {
+  background-color: rgba(239,68,68,.10) !important;
+  border-color: rgba(239,68,68,.48) !important;
+}
+tr.task-progress-orange > td, .task-card.task-progress-orange {
+  background-color: rgba(249,115,22,.12) !important;
+  border-color: rgba(249,115,22,.55) !important;
+}
+tr.task-progress-green > td, .task-card.task-progress-green {
+  background-color: rgba(34,197,94,.12) !important;
+  border-color: rgba(34,197,94,.55) !important;
+}
+tr.task-progress-red > td:first-child { box-shadow: inset 3px 0 #ef4444; }
+tr.task-progress-orange > td:first-child { box-shadow: inset 3px 0 #f97316; }
+tr.task-progress-green > td:first-child { box-shadow: inset 3px 0 #22c55e; }
+.task-progress-indicator {
+  display:inline-flex; align-items:center; gap:6px; font-size:10px;
+  font-weight:700; letter-spacing:.45px; text-transform:uppercase;
+  border-radius:999px; padding:3px 8px; margin-top:6px;
+}
+.task-progress-red .task-progress-indicator { color:#fecaca; background:rgba(239,68,68,.18); }
+.task-progress-orange .task-progress-indicator { color:#fed7aa; background:rgba(249,115,22,.18); }
+.task-progress-green .task-progress-indicator { color:#bbf7d0; background:rgba(34,197,94,.18); }
+
 </style></head>
 <body><div class="app">
 <header class="top"><div class="brand"><div class="logo">✓</div><div><div class="eyebrow">Personal productivity</div><div class="h1">Daily Activity Tracker</div><div class="subtitle">A clearer view of your day. Make progress visible.</div></div></div><div class="topright"><button id="prevDay">←</button><div><div class="date">TRACKING DATE</div><input id="datePicker" class="field" type="date"></div><button id="nextDay">→</button><button id="todayBtn">Today</button><button class="primary" id="addBtn">＋ Add task</button></div></header>
@@ -48,8 +159,8 @@ button,input,select,textarea{font:inherit}button{cursor:pointer;border:1px solid
 <label><input type="checkbox" id="fPrincipal"> Approved by Principal</label>
 <label><input type="checkbox" id="fWhatsApp"> Shared on WhatsApp</label>
 <label><input type="checkbox" id="fInstagram"> Shared on Instagram</label>
-<label><input type="checkbox" id="fFlexSent"> Sent to Flex Printing</label>
-<label><input type="checkbox" id="fFlexFixed"> Flex Fixed</label>
+<label><input type="checkbox" id="fFlexSent"> <span class="check-copy">Sent to Flex Printing${t.workflow?.flexSent?`<span class="workflow-date">Date: ${formatApprovalDate(t.workflowDates?.flexSent)}</span>`:""}</span></label>
+<label><input type="checkbox" id="fFlexFixed"> <span class="check-copy">Flex Fixed${t.workflow?.flexFixed?`<span class="workflow-date">Date: ${formatApprovalDate(t.workflowDates?.flexFixed)}</span>`:""}</span></label>
 </div></div>
 <div class="formfield full"><label for="fNotes">Description / notes / blockers (optional)</label><textarea id="fNotes" rows="3" placeholder="Context, sub-tasks, links, decisions, or blocking issues"></textarea></div>
 </div><div class="modalactions"><button type="button" id="cancelBtn">Cancel</button><button class="primary" type="submit">Save task</button></div></form></div></div>
@@ -65,19 +176,33 @@ const dayTasks=()=>tasks.filter(t=>t.date===activeDate);
 const done=t=>t.status==='Completed';
 function isOverdue(t){const dueDate=t.dueDate||t.date;if(!dueDate||t.status==='Completed'||(t.status==='On Hold'||t.status==='Blocked'))return false;const today=iso(new Date());if(dueDate<today)return true;if(dueDate>today)return false;return !!(t.due&&t.due<new Date().toTimeString().slice(0,5))}
 function statusClass(s){return {'To Do':'s-not','Not Started':'s-not','In Progress':'s-progress','Completed':'s-done','Blocked':'s-hold','On Hold':'s-hold'}[s]||'s-not'}
+
+function taskProgressClass(t){
+  const status=String(t.status||'').toLowerCase();
+  if(status==='completed') return 'task-progress-green';
+  const keys=['sheeba','principal','whatsapp','instagram','flexSent','flexFixed'];
+  const done=keys.filter(k=>t.workflow&&t.workflow[k]).length;
+  if(done===keys.length) return 'task-progress-green';
+  if(done>0 || status==='in progress' || status==='blocked') return 'task-progress-orange';
+  return 'task-progress-red';
+}
+function taskProgressLabel(t){
+  const c=taskProgressClass(t);
+  return c==='task-progress-green'?'Completed':c==='task-progress-orange'?'In progress':'Not started';
+}
 function render(){const list=dayTasks(),n=list.length,d=list.filter(done).length,p=list.filter(t=>t.status==='In Progress').length,h=list.filter(t=>(t.status==='On Hold'||t.status==='Blocked')).length,ns=list.filter(t=>t.status==='Not Started').length,o=list.filter(isOverdue).length,pct=n?Math.round(d/n*100):0;
 $('totalStat').textContent=n;$('doneStat').textContent=d;$('progressStat').textContent=p;$('overdueStat').textContent=o;$('doneFoot').textContent=pct+'% complete';$('totalFoot').textContent=n?`${n-d} task${n-d===1?'':'s'} still open`:'Tasks planned for this day';$('progressFoot').textContent=p?`${p} task${p===1?'':'s'} actively moving`:'No active tasks right now';
 $('ringPct').textContent=pct+'%';$('ringDone').setAttribute('stroke-dasharray',`${296*d/(n||1)} 296`);$('ringProg').setAttribute('stroke-dasharray',`${296*p/(n||1)} 296`);$('ringProg').setAttribute('stroke-dashoffset',`${-296*d/(n||1)}`);$('legDone').textContent=d;$('legProg').textContent=p;$('legNot').textContent=ns;$('legHold').textContent=h;$('dayProgressBar').style.width=pct+'%';$('dayProgressText').textContent=n?`${d} of ${n} tasks completed (${pct}%). ${n-d===0?'Excellent — everything is complete!':`${n-d} task${n-d===1?' remains':'s remain'} to go.`}`:'Complete a task to start building your progress.';
 $('completionBig').textContent=pct+'%';$('completionBar').style.width=pct+'%';$('completionSub').textContent=n?(d===n?'All tasks completed. Great work!':`${n-d} task${n-d===1?'':'s'} left to reach 100%.`):'You haven’t added any tasks yet.';
 const priorityOrder={High:0,Medium:1,Low:2};const filtered=list.filter(t=>( $('statusFilter').value==='All statuses'||t.status===$('statusFilter').value)&&( $('categoryFilter').value==='All categories'||t.category===$('categoryFilter').value)&&(`${t.title} ${t.category} ${t.notes||''} ${t.tags||''} ${t.owner||''}`.toLowerCase().includes($('searchBox').value.toLowerCase()))).sort((a,b)=>priorityOrder[a.priority]-priorityOrder[b.priority]||(a.due||'99:99').localeCompare(b.due||'99:99'));
-$('taskRows').innerHTML=filtered.map(t=>`<tr><td><div class="taskname">${esc(t.title)}</div><div class="tiny">${esc(t.category)} · ${esc(t.layer||'Operational')}${t.owner?' · '+esc(t.owner):''}${t.tags?' · '+esc(t.tags):''}</div><div class="progressline" style="max-width:180px;margin-top:6px"><i style="width:${Math.max(0,Math.min(100,Number(t.progress??(t.status==='Completed'?100:0))))}%"></i></div><div class="workflow-checks"><label><input type="checkbox" ${t.workflow?.sheeba?'checked':''} onchange="toggleWorkflow('${t.id}','sheeba',this.checked)"> Sheeba Mam approval</label><label><input type="checkbox" ${t.workflow?.principal?'checked':''} onchange="toggleWorkflow('${t.id}','principal',this.checked)"> Principal approval</label><label><input type="checkbox" ${t.workflow?.whatsapp?'checked':''} onchange="toggleWorkflow('${t.id}','whatsapp',this.checked)"> WhatsApp shared</label><label><input type="checkbox" ${t.workflow?.instagram?'checked':''} onchange="toggleWorkflow('${t.id}','instagram',this.checked)"> Instagram shared</label><label><input type="checkbox" ${t.workflow?.flexSent?'checked':''} onchange="toggleWorkflow('${t.id}','flexSent',this.checked)"> Sent to Flex Printing</label><label><input type="checkbox" ${t.workflow?.flexFixed?'checked':''} onchange="toggleWorkflow('${t.id}','flexFixed',this.checked)"> Flex Fixed</label></div><div class="task-check-summary"><b>${[t.workflow?.sheeba,t.workflow?.principal,t.workflow?.whatsapp,t.workflow?.instagram,t.workflow?.flexSent,t.workflow?.flexFixed].filter(Boolean).length}/6</b> approval & publishing steps complete</div>${t.notes?`<div class="tasknotes"><span style="color:var(--cyan);font-weight:700;font-size:10px;text-transform:uppercase;letter-spacing:.5px">Description / Notes / Blockers</span><div>${esc(t.notes)}</div></div>`:""}</td><td><span class="p-${t.priority.toLowerCase()}">● ${esc(t.priority)}</span></td><td>${esc(t.dueDate||t.date)}${t.due?' · '+esc(t.due):''}${isOverdue(t)?'<div class="tiny" style="color:var(--red)">Overdue</div>':''}</td><td><select class="field" style="padding:6px;font-size:11px;max-width:130px" onchange="changeStatus('${t.id}',this.value)">${['To Do','In Progress','Blocked','Completed'].map(s=>`<option ${t.status===s?'selected':''}>${s}</option>`).join('')}</select></td><td><div class="rowactions"><button onclick="editTask('${t.id}')">Edit</button><button onclick="deleteTask('${t.id}')">×</button></div></td></tr>`).join('');
+$('taskRows').innerHTML=filtered.map(t=>`<tr class="${taskProgressClass(t)}"><td><div class="taskname">${esc(t.title)}</div><div class="task-progress-indicator">${taskProgressLabel(t)}</div><div class="tiny">${esc(t.category)} · ${esc(t.layer||'Operational')}${t.owner?' · '+esc(t.owner):''}${t.tags?' · '+esc(t.tags):''}</div><div class="progressline" style="max-width:180px;margin-top:6px"><i style="width:${Math.max(0,Math.min(100,Number(t.progress??(t.status==='Completed'?100:0))))}%"></i></div><div class="workflow-checks"><label class="${t.workflow?.sheeba?'approved':'pending'}"><input type="checkbox" ${t.workflow?.sheeba?'checked':''} onchange="toggleWorkflow('${t.id}','sheeba',this.checked)"> <span class="check-copy">Sheeba Mam approval${t.workflow?.sheeba?`<span class="workflow-date">Date: ${formatApprovalDate(t.workflowDates?.sheeba)}</span>`:""}</span></label><label class="${t.workflow?.principal?'approved':'pending'}"><input type="checkbox" ${t.workflow?.principal?'checked':''} onchange="toggleWorkflow('${t.id}','principal',this.checked)"> <span class="check-copy">Principal approval${t.workflow?.principal?`<span class="workflow-date">Date: ${formatApprovalDate(t.workflowDates?.principal)}</span>`:""}</span></label><label class="${t.workflow?.whatsapp?'approved':'pending'}"><input type="checkbox" ${t.workflow?.whatsapp?'checked':''} onchange="toggleWorkflow('${t.id}','whatsapp',this.checked)"> <span class="check-copy">WhatsApp shared${t.workflow?.whatsapp?`<span class="workflow-date">Date: ${formatApprovalDate(t.workflowDates?.whatsapp)}</span>`:""}</span></label><label class="${t.workflow?.instagram?'approved':'pending'}"><input type="checkbox" ${t.workflow?.instagram?'checked':''} onchange="toggleWorkflow('${t.id}','instagram',this.checked)"> <span class="check-copy">Instagram shared${t.workflow?.instagram?`<span class="workflow-date">Date: ${formatApprovalDate(t.workflowDates?.instagram)}</span>`:""}</span></label><label class="${t.workflow?.flexSent?'approved':'pending'}"><input type="checkbox" ${t.workflow?.flexSent?'checked':''} onchange="toggleWorkflow('${t.id}','flexSent',this.checked)"> Sent to Flex Printing</label><label class="${t.workflow?.flexFixed?'approved':'pending'}"><input type="checkbox" ${t.workflow?.flexFixed?'checked':''} onchange="toggleWorkflow('${t.id}','flexFixed',this.checked)"> Flex Fixed</label></div><div class="task-check-summary"><b>${[t.workflow?.sheeba,t.workflow?.principal,t.workflow?.whatsapp,t.workflow?.instagram,t.workflow?.flexSent,t.workflow?.flexFixed].filter(Boolean).length}/6</b> approval & publishing steps complete</div>${t.notes?`<div class="tasknotes"><span style="color:var(--cyan);font-weight:700;font-size:10px;text-transform:uppercase;letter-spacing:.5px">Description / Notes / Blockers</span><div>${esc(t.notes)}</div></div>`:""}</td><td><span class="p-${t.priority.toLowerCase()}">● ${esc(t.priority)}</span></td><td>${esc(t.dueDate||t.date)}${t.due?' · '+esc(t.due):''}${isOverdue(t)?'<div class="tiny" style="color:var(--red)">Overdue</div>':''}</td><td><select class="field" style="padding:6px;font-size:11px;max-width:130px" onchange="changeStatus('${t.id}',this.value)">${['To Do','In Progress','Blocked','Completed'].map(s=>`<option ${t.status===s?'selected':''}>${s}</option>`).join('')}</select></td><td><div class="rowactions"><button onclick="editTask('${t.id}')">Edit</button><button onclick="deleteTask('${t.id}')">×</button></div></td></tr>`).join('');
 $('emptyState').style.display=filtered.length?'none':'block';
 const open=list.filter(t=>!done(t)).sort((a,b)=>priorityOrder[a.priority]-priorityOrder[b.priority]||(a.due||'99:99').localeCompare(b.due||'99:99'));const focus=open[0];$('focusTitle').textContent=focus?focus.title:'You’re all clear';$('focusDesc').textContent=focus?`${focus.priority} priority · ${focus.category}${focus.dueDate?' · due '+focus.dueDate:''}${focus.due?' '+focus.due:''}${focus.estimateMinutes?' · estimate '+focus.estimateMinutes+' min':''}. Start or complete this task to keep moving.`:'Add tasks and your next priority will appear here.';
 const pri=['High','Medium','Low'];$('priorityList').innerHTML=pri.map(pr=>{const total=list.filter(t=>t.priority===pr&&!done(t)).length;const all=list.filter(t=>t.priority===pr).length;const color=pr==='High'?'var(--red)':pr==='Medium'?'var(--amber)':'var(--cyan)';return `<div><div style="display:flex;justify-content:space-between;font-size:12px"><span style="color:${color}">${pr} priority</span><b>${total} open</b></div><div class="progressline"><i style="width:${all?((all-total)/all*100):0}%;background:${color}"></i></div></div>`}).join('');
 drawWeekly();}
 function drawWeekly(){const c=$('weeklyChart'),ctx=c.getContext('2d'),r=c.getBoundingClientRect(),dpr=window.devicePixelRatio||1;c.width=Math.max(300,r.width*dpr);c.height=Math.max(160,r.height*dpr);ctx.scale(dpr,dpr);const w=r.width,h=r.height;ctx.clearRect(0,0,w,h);const data=[];for(let i=6;i>=0;i--){let d=new Date(activeDate+'T12:00:00');d.setDate(d.getDate()-i);let key=iso(d),arr=tasks.filter(t=>t.date===key);data.push({label:d.toLocaleDateString(undefined,{weekday:'short'}),total:arr.length,done:arr.filter(done).length,key})}const max=Math.max(4,...data.map(x=>x.total)),left=28,right=8,top=10,bottom=30,chartH=h-top-bottom,chartW=w-left-right;ctx.font='10px Segoe UI';ctx.textAlign='right';for(let i=0;i<=4;i++){let y=top+chartH*i/4;ctx.strokeStyle='#26334c';ctx.beginPath();ctx.moveTo(left,y);ctx.lineTo(w-right,y);ctx.stroke();ctx.fillStyle='#7886a1';ctx.fillText(Math.round(max*(4-i)/4),left-8,y+3)}let group=chartW/7,bw=Math.min(18,group*.28);data.forEach((v,i)=>{let x=left+group*i+group/2;let totalH=v.total/max*chartH,doneH=v.done/max*chartH;ctx.fillStyle='#343e5a';ctx.beginPath();ctx.roundRect(x-bw-2,top+chartH-totalH,bw,Math.max(2,totalH),4);ctx.fill();ctx.fillStyle='#5de1d0';ctx.beginPath();ctx.roundRect(x+2,top+chartH-doneH,bw,Math.max(2,doneH),4);ctx.fill();ctx.fillStyle=v.key===activeDate?'#edf2ff':'#8f9bb4';ctx.textAlign='center';ctx.fillText(v.label,x, h-10)});ctx.textAlign='left';ctx.fillStyle='#343e5a';ctx.fillRect(left+3,0,7,7);ctx.fillStyle='#8f9bb4';ctx.fillText('Planned',left+14,7);ctx.fillStyle='#5de1d0';ctx.fillRect(left+75,0,7,7);ctx.fillStyle='#8f9bb4';ctx.fillText('Completed',left+86,7)}
 function changeStatus(id,status){let t=tasks.find(t=>t.id===id);if(t){t.status=status;t.updated=new Date().toISOString();save();render()}}
-function toggleWorkflow(id,key,value){let t=tasks.find(t=>t.id===id);if(t){t.workflow=t.workflow||{};t.workflow[key]=value;t.updated=new Date().toISOString();save();render()}}
+function formatApprovalDate(value){if(!value)return '';const d=new Date(value);if(Number.isNaN(d.getTime()))return '';return d.toLocaleString(undefined,{year:'numeric',month:'short',day:'2-digit',hour:'2-digit',minute:'2-digit'});}function toggleWorkflow(id,key,value){const t=tasks.find(x=>x.id===id);if(!t)return;t.workflow=t.workflow||{};t.workflowDates=t.workflowDates||{};t.workflow[key]=value;t.workflowDates[key]=value?new Date().toISOString():null;save();render();}
 function openModal(t=null){editingId=t?.id||null;$('modalTitle').textContent=t?'Edit task':'Add task';$('fTitle').value=t?.title||'';$('fCategory').value=t?.category||'Work';$('fLayer').value=t?.layer||'Operational';$('fPriority').value=t?.priority||'Medium';$('fOwner').value=t?.owner||'';$('fDueDate').value=t?.dueDate||t?.date||activeDate;$('fDue').value=t?.due||'';$('fEstimate').value=t?.estimateMinutes??'';$('fLogged').value=t?.hoursLogged??'';$('fStatus').value=t?.status||'To Do';$('fProgress').value=t?.progress??(t?.status==='Completed'?100:0);$('fTags').value=t?.tags||'';$('fNotes').value=t?.notes||'';const wf=t?.workflow||{};$('fSheeba').checked=!!wf.sheeba;$('fPrincipal').checked=!!wf.principal;$('fWhatsApp').checked=!!wf.whatsapp;$('fInstagram').checked=!!wf.instagram;$('fFlexSent').checked=!!wf.flexSent;$('fFlexFixed').checked=!!wf.flexFixed;$('modalBack').style.display='flex';setTimeout(()=>$('fTitle').focus(),20)}
 function closeModal(){$('modalBack').style.display='none';editingId=null}
 function editTask(id){const t=tasks.find(x=>x.id===id);if(t)openModal(t)}
