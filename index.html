@@ -122,8 +122,25 @@ tr.task-progress-green > td:first-child { box-shadow: inset 3px 0 #22c55e; }
 .task-progress-orange .task-progress-indicator { color:#fed7aa; background:rgba(249,115,22,.18); }
 .task-progress-green .task-progress-indicator { color:#bbf7d0; background:rgba(34,197,94,.18); }
 
+
+.cloudbar{max-width:1500px;margin:12px auto 0;padding:12px 16px;display:flex;align-items:center;justify-content:space-between;gap:12px;background:#121a2d;border:1px solid #26334c;border-radius:14px;color:#edf2ff}
+.cloudstatus{font-size:12px;color:#aab6cc;margin-top:3px}.authcontrols{display:flex;gap:7px;flex-wrap:wrap;align-items:center}.authcontrols input{background:#0e1729;border:1px solid #26334c;border-radius:8px;padding:9px;color:#edf2ff;min-width:160px}
+@media(max-width:650px){.cloudbar{margin:8px;padding:12px;align-items:stretch;flex-direction:column}.authcontrols{display:grid;grid-template-columns:1fr 1fr}.authcontrols input{min-width:0;width:100%}.authcontrols button{width:100%;min-height:42px}}
+
 </style></head>
-<body><div class="app">
+<body>
+<div id="cloudBar" class="cloudbar">
+  <div><strong>Cloud sync</strong><div id="cloudStatus" class="cloudstatus">Sign in to sync tasks between devices.</div></div>
+  <div id="authControls" class="authcontrols">
+    <input id="sbEmail" type="email" autocomplete="username" placeholder="Email address" aria-label="Email address">
+    <input id="sbPassword" type="password" autocomplete="current-password" placeholder="Password" aria-label="Password">
+    <button id="sbSignIn" class="primary">Sign in</button>
+    <button id="sbSignUp">Create account</button>
+  </div>
+  <button id="sbSignOut" style="display:none">Sign out</button>
+</div>
+
+<div class="app">
 <header class="top"><div class="brand"><div class="logo">✓</div><div><div class="eyebrow">Personal productivity</div><div class="h1">Daily Activity Tracker</div><div class="subtitle">A clearer view of your day. Make progress visible.</div></div></div><div class="topright"><button id="prevDay">←</button><div><div class="date">TRACKING DATE</div><input id="datePicker" class="field" type="date"></div><button id="nextDay">→</button><button id="todayBtn">Today</button><button class="primary" id="addBtn">＋ Add task</button></div></header>
 <section class="grid stats">
 <div class="card"><div class="stat-head"><span>TOTAL TASKS</span><span class="stat-icon">▤</span></div><div class="stat-value" id="totalStat">0</div><div class="stat-foot" id="totalFoot">Tasks planned for this day</div></div>
@@ -164,13 +181,16 @@ tr.task-progress-green > td:first-child { box-shadow: inset 3px 0 #22c55e; }
 </div></div>
 <div class="formfield full"><label for="fNotes">Description / notes / blockers (optional)</label><textarea id="fNotes" rows="3" placeholder="Context, sub-tasks, links, decisions, or blocking issues"></textarea></div>
 </div><div class="modalactions"><button type="button" id="cancelBtn">Cancel</button><button class="primary" type="submit">Save task</button></div></form></div></div>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
 const $=id=>document.getElementById(id);
 const TODAY=new Date(); const iso=d=>{const x=new Date(d);return `${x.getFullYear()}-${String(x.getMonth()+1).padStart(2,'0')}-${String(x.getDate()).padStart(2,'0')}`};
-let activeDate=iso(TODAY), tasks=[], editingId=null;
+let activeDate=iso(TODAY), tasks=[], editingId=null, currentUser=null, cloudReady=false, cloudBusy=false;
 try{tasks=JSON.parse(localStorage.getItem('dailyActivityTrackerPro')||'[]')}catch(e){tasks=[]}
 $('datePicker').value=activeDate;
-const save=()=>localStorage.setItem('dailyActivityTrackerPro',JSON.stringify(tasks));
+const saveLocal=()=>localStorage.setItem('dailyActivityTrackerPro',JSON.stringify(tasks));
+const save=()=>{saveLocal(); if(currentUser && cloudReady) void syncTasksToCloud();};
+
 const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const dayTasks=()=>tasks.filter(t=>t.date===activeDate);
 const done=t=>t.status==='Completed';
@@ -221,5 +241,101 @@ $('saveReflection').onclick=()=>{const r={wins:$('reflectionWins').value,carry:$
 const originalRender=render;
 render=function(){originalRender();loadReflection()};
 
+
+// SUPABASE CONFIGURATION: fill these in from Project Settings -> API Keys.
+const SUPABASE_URL = "https://thqxbimbwwglwtdjmnkl.supabase.co";
+const SUPABASE_PUBLISHABLE_KEY = "sb_publishable_UBmTUUrYHQJX43WvwR0q8w_I8kx74kJ";
+let supabaseClient = null;
+function setCloudStatus(message){$('cloudStatus').textContent=message;}
+function setSignedInUI(user){
+  currentUser=user||null;
+  $('authControls').style.display=user?'none':'flex';
+  $('sbSignOut').style.display=user?'inline-flex':'none';
+  setCloudStatus(user?`Signed in as ${user.email}. Syncing tasks across devices.`:'Sign in to sync tasks between devices.');
+}
+async function syncTasksToCloud(){
+  if(!supabaseClient||!currentUser||!cloudReady||cloudBusy)return;
+  cloudBusy=true;
+  try{
+    saveLocal();
+    const {error}=await supabaseClient.from('tracker_data').upsert({
+      user_id:currentUser.id,
+      tasks:tasks,
+      updated_at:new Date().toISOString()
+    },{onConflict:'user_id'});
+    if(error)throw error;
+    setCloudStatus('Cloud synced · '+new Date().toLocaleTimeString());
+  }catch(e){
+    console.error(e);
+    setCloudStatus('Cloud sync failed: '+(e.message||'check Supabase setup'));
+  }finally{cloudBusy=false;}
+}
+async function loadTasksFromCloud(){
+  if(!supabaseClient||!currentUser)return;
+  cloudReady=false;
+  setCloudStatus('Loading your cloud tasks…');
+  try{
+    const {data,error}=await supabaseClient.from('tracker_data').select('tasks').eq('user_id',currentUser.id).maybeSingle();
+    if(error)throw error;
+    if(data && Array.isArray(data.tasks)){
+      tasks=data.tasks;
+      saveLocal();
+    }else{
+      // First sign-in: migrate this browser's existing tasks to the cloud.
+      saveLocal();
+      const {error:upsertError}=await supabaseClient.from('tracker_data').upsert({
+        user_id:currentUser.id,tasks:tasks,updated_at:new Date().toISOString()
+      },{onConflict:'user_id'});
+      if(upsertError)throw upsertError;
+    }
+    cloudReady=true;
+    render();
+    setCloudStatus('Cloud sync is active · '+tasks.length+' task(s) loaded.');
+  }catch(e){
+    console.error(e);
+    setCloudStatus('Could not load cloud tasks: '+(e.message||'check table and policies'));
+  }
+}
+async function initializeCloud(){
+  if(SUPABASE_URL.includes('PASTE_YOUR')||SUPABASE_PUBLISHABLE_KEY.includes('PASTE_YOUR')){
+    setCloudStatus('Setup needed: add your Supabase URL and publishable key in index.html.');
+    return;
+  }
+  if(!window.supabase){setCloudStatus('Supabase library failed to load. Check your internet connection.');return;}
+  supabaseClient=window.supabase.createClient(SUPABASE_URL,SUPABASE_PUBLISHABLE_KEY);
+  const {data:{session},error}=await supabaseClient.auth.getSession();
+  if(error){setCloudStatus(error.message);return;}
+  if(session?.user){setSignedInUI(session.user);await loadTasksFromCloud();}
+  else setSignedInUI(null);
+  supabaseClient.auth.onAuthStateChange(async(_event,session)=> {
+    if(session?.user){setSignedInUI(session.user);await loadTasksFromCloud();}
+    else {cloudReady=false;setSignedInUI(null);}
+  });
+}
+$('sbSignIn').onclick=async()=>{
+  if(!supabaseClient){setCloudStatus('Add your Supabase URL and publishable key first.');return;}
+  const email=$('sbEmail').value.trim(),password=$('sbPassword').value;
+  if(!email||!password){setCloudStatus('Enter your email and password.');return;}
+  setCloudStatus('Signing in…');
+  const {error}=await supabaseClient.auth.signInWithPassword({email,password});
+  if(error)setCloudStatus(error.message);
+};
+$('sbSignUp').onclick=async()=>{
+  if(!supabaseClient){setCloudStatus('Add your Supabase URL and publishable key first.');return;}
+  const email=$('sbEmail').value.trim(),password=$('sbPassword').value;
+  if(!email||!password){setCloudStatus('Enter your email and password.');return;}
+  if(password.length<8){setCloudStatus('Use a password with at least 8 characters.');return;}
+  setCloudStatus('Creating account…');
+  const {data,error}=await supabaseClient.auth.signUp({email,password});
+  if(error)setCloudStatus(error.message);
+  else setCloudStatus(data.session?'Account created. Signing in…':'Account created. Check your email to confirm, then sign in.');
+};
+$('sbSignOut').onclick=async()=>{
+  if(!supabaseClient)return;
+  await supabaseClient.auth.signOut();
+  cloudReady=false;setSignedInUI(null);
+};
+
 render();
+initializeCloud();
 </script></body></html>
