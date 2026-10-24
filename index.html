@@ -344,12 +344,12 @@ async function loadTasksFromCloud(){
   }
 }
 async function initializeCloud(){
-  if(SUPABASE_URL.includes('https://thqxbimbwwglwtdjmnkl.supabase.co')||SUPABASE_PUBLISHABLE_KEY.includes('sb_publishable_UBmTUUrYHQJX43WvwR0q8w_I8kx74kJ')){
+  if(SUPABASE_URL.includes('PASTE_YOUR')||SUPABASE_PUBLISHABLE_KEY.includes('PASTE_YOUR')){
     setCloudStatus('Setup needed: add your Supabase URL and publishable key in index.html.');
     return;
   }
   if(!window.supabase){setCloudStatus('Supabase library failed to load. Check your internet connection.');return;}
-  supabaseClient=window.supabase.createClient(https://thqxbimbwwglwtdjmnkl.supabase.co,sb_publishable_UBmTUUrYHQJX43WvwR0q8w_I8kx74kJ);
+  supabaseClient=window.supabase.createClient(SUPABASE_URL,SUPABASE_PUBLISHABLE_KEY);
   const {data:{session},error}=await supabaseClient.auth.getSession();
   if(error){setCloudStatus(error.message);return;}
   if(session?.user){setSignedInUI(session.user);await loadTasksFromCloud();}
