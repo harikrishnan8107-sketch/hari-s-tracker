@@ -349,7 +349,7 @@ async function initializeCloud(){
     return;
   }
   if(!window.supabase){setCloudStatus('Supabase library failed to load. Check your internet connection.');return;}
-  supabaseClient=window.supabase.createClient(SUPABASE_URL,SUPABASE_PUBLISHABLE_KEY);
+  supabaseClient=window.supabase.createClient(https://thqxbimbwwglwtdjmnkl.supabase.co,sb_publishable_UBmTUUrYHQJX43WvwR0q8w_I8kx74kJ);
   const {data:{session},error}=await supabaseClient.auth.getSession();
   if(error){setCloudStatus(error.message);return;}
   if(session?.user){setSignedInUI(session.user);await loadTasksFromCloud();}
